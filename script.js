@@ -15,7 +15,7 @@ let playGame=true;
 if(playGame){
     submit.addEventListener('click',function(e){
         e.preventDefault();
-        const guess = userInput.value;
+        const guess = parseInt(userInput.value);
         validateGuess(guess);
     })
 }
@@ -31,7 +31,7 @@ function validateGuess(guess){
         alert('you enter a number greater than 100.')
     }
     else{
-        prevGuess.push = guess;
+        prevGuess.push(guess);
         if(numGuess === 11){
             displayGuess(guess);
             displayMessage(`Game over. Random number was ${randomNumber}`);
@@ -52,7 +52,7 @@ function checkGuess(guess){
         displayMessage(`the number is too less`);
     }
     else if(guess > randomNumber){
-        displayMessage(`the numer is too greater`);
+        displayMessage(`the number is too greater`);
     }
 }
 function displayGuess(guess){
@@ -83,7 +83,7 @@ function newGame(){
         guessSlot.innerHTML = '';
         remaining.innerHTML = `${11-numGuess} `;
         userInput.removeAttribute('disabled');
-        startover.removechild(p);
+        startover.removeChild(p);
         playGame=true;
     })
 }
